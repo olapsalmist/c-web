@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Square-root Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Calculate your Square-root easily <h4>Input your numbers.</h4></p>
+</div>
+
+<form asp-controller="Square" asp-action="Squareroot" method="POST">
+<p>
+        Enter value1 <input type="number"  name="firstnumber" placeholder="First nunmber"/>
+    <p> Enter value2 <input type="number"  name="secondnumber" placeholder="Second nunmber"/> </p> 
+    <button type="submit">Submit</button>
+</p>
+</form>
+
+<div>
+    
+</div>
+
+    @{
+    if (ViewBag.firstnumber == 0 || ViewBag.secondnumber == 0 )
+    {
+        <p>Invalid number entered.</p>
+    }
+    else if (ViewBag.firstnumber<1 || ViewBag.secondnumber<1)
+    {
+        <p>Negative integers are not allowed, please input value not less than 1</p>
+    }
+   
+    else if (ViewBag.result1 == ViewBag.result2)
+    {
+        <p>@ViewBag.firstnumber has the same Squareroot @ViewBag.result1 as @ViewBag.secondnumber with Squareroot @ViewBag.result2.</p>
+        <p>please enter another set of numbers.</p>
+    }
+
+    else if (ViewBag.result1 > ViewBag.result2)
+    {
+        <p> @ViewBag.firstnumber has the higher Squareroot @ViewBag.result1.</p>
+    } 
+    
+    else 
+    {
+        <p>@ViewBag.secondnumber has a higher Squareroot of @ViewBag.result2.</p>
+    }    
+}
